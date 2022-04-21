@@ -1,13 +1,17 @@
 // import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+import Home from './components/Home';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Nav, Form, FormControl, Container } from 'react-bootstrap';
 
 function App() {
+  const [page, setPage] = React.useState('home');
   return (
     <div className="App">
-      <Navbar bg="primary" expand="lg" variant='dark'>
+      <Navbar className="px-2" bg="primary" expand="lg" variant='dark'>
         <Container fluid>
           <Navbar.Brand href="#">Blogs</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -32,6 +36,9 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <main>
+        {page === 'home' && <Home onMove={setPage}/>}
+      </main>
     </div>
   );
 }
